@@ -1,7 +1,10 @@
 import { MaterialReactTable, useMaterialReactTable } from 'material-react-table'
-import { FC, useMemo } from 'react'
+import { FC, ReactNode } from 'react'
 
-const Table: FC<{ data: any; columns: any }> = ({ data, columns }) => {
+const Table: FC<{
+  data: { [key: string]: ReactNode }[]
+  columns: { accessorKey: string; header: string }[]
+}> = ({ data, columns }) => {
   const table = useMaterialReactTable({
     columns,
     data,

@@ -1,15 +1,7 @@
-import { Cookies } from 'react-cookie'
-
 import { createApi, fetchBaseQuery, retry } from '@reduxjs/toolkit/query/react'
 
 const baseQuery = fetchBaseQuery({
-  baseUrl: '',
-  prepareHeaders: (headers) => {
-    const cookies = new Cookies()
-    const token = cookies.get('token')
-    headers.set('authorization', token)
-    return headers
-  },
+  baseUrl: 'https://dummyjson.com/',
 })
 
 const baseQueryWithRetry = retry(baseQuery, {
@@ -17,8 +9,8 @@ const baseQueryWithRetry = retry(baseQuery, {
 })
 
 export const api = createApi({
-  reducerPath: 'splitApiGQL',
+  reducerPath: 'splitApi',
   baseQuery: baseQueryWithRetry,
-  tagTypes: [],
+  tagTypes: ['Users'],
   endpoints: () => ({}),
 })

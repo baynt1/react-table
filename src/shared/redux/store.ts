@@ -1,11 +1,13 @@
 import { TypedUseSelectorHook, useDispatch, useSelector } from 'react-redux'
 import { api } from 'shared/api/api-query/api-query'
+import usersSlice from 'shared/redux/users/users-slice'
 
 import { configureStore } from '@reduxjs/toolkit'
 import { setupListeners } from '@reduxjs/toolkit/query'
 
 const store = configureStore({
   reducer: {
+    users: usersSlice,
     [api.reducerPath]: api.reducer,
   },
   middleware: (getDefaultMiddleware) =>
